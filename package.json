@@ -35,9 +35,11 @@
     "ember-try": "0.0.6"
   },
   "keywords": [
-    "ember-addon"
+    "ember-addon",
+    "star-rating"
   ],
   "dependencies": {
+    "ember-cli-htmlbars": "0.7.6",
     "ember-cli-babel": "^5.0.0"
   },
   "ember-addon": {
