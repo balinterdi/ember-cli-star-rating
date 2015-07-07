@@ -1,0 +1,1 @@
+export { default } from 'ember-cli-star-rating/component-tests/star-rating';
