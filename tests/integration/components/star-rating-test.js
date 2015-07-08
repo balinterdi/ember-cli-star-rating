@@ -45,3 +45,20 @@ test('Triggers the passed-in action handler', function(assert) {
 
   assert.ok(clickedRating, "The `updateRating` action was called");
 });
+
+test('In block form, yields back each star', function(assert) {
+  assert.expect(2);
+
+  var song = Ember.Object.create({ rating: 4 });
+  this.set('song', song);
+  this.set('maxRating', 5);
+
+  this.render(hbs`
+    {{#star-rating item=song rating=song.rating maxRating=maxRating as |star|}}
+      <span class="{{if star.full 'full-star' 'empty-star'}}"></span>
+    {{/star-rating}}
+  `);
+
+  assert.equal(this.$('.full-star').length, 4, "The right amount of full stars is rendered");
+  assert.equal(this.$('.empty-star').length, 1, "The right amount of empty stars is rendered");
+});
