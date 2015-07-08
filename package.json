@@ -1,7 +1,7 @@
 {
   "name": "ember-cli-star-rating",
   "version": "0.0.0",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Adds a star-rating widget to your Ember application.",
   "directories": {
     "doc": "doc",
     "test": "tests"
@@ -11,11 +11,11 @@
     "build": "ember build",
     "test": "ember try:testall"
   },
-  "repository": "",
+  "repository": "https://github.com/balinterdi/ember-cli-star-rating",
   "engines": {
     "node": ">= 0.10.0"
   },
-  "author": "",
+  "author": "Balint Erdi",
   "license": "MIT",
   "devDependencies": {
     "broccoli-asset-rev": "^2.0.2",
@@ -37,6 +37,8 @@
   },
   "keywords": [
     "ember-addon",
+    "ember",
+    "ember-cli",
     "star-rating"
   ],
   "dependencies": {
