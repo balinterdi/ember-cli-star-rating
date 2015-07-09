@@ -1,25 +1,47 @@
-# Ember-cli-star-rating
+# ember-cli-star-rating
 
-This README outlines the details of collaborating on this Ember addon.
+An Ember CLI addon for using stars to manage ratings in your glorious Ember application.
 
 ## Installation
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+As this is an Ember addon, you just need to do:
 
-## Running
+    ember install ember-cli-star-rating
 
-* `ember server`
-* Visit your app at http://localhost:4200.
+Reload your app and you're ready to reach for the stars!
+
+## Usage
+
+The addon makes a `star-rating` component accessible in your consuming Ember
+app. You should pass it the item the rating should be set on, the rating
+property itself and the action that should be fired when one of the stars is
+clicked by the user.
+
+```hbs
+{{star-rating item=song rating=song.rating setAction="updateRating"}}
+```
+
+Optionally, you can pass the maximum rating (the number of stars to be drawn, which is 5 by default):
+
+```hbs
+{{star-rating item=song rating=song.rating setAction="updateRating" maxRating=10}}
+```
+
+That's it!
+
+## Contributing
+
+I'm happy to consider changes and accept feature requests (although the problem
+space this lib aims to solve is fairly limited :)). If you submit a PR, please
+include tests in `tests/integration/components/star-rating-test.js`.
+
+Ember CLI now makes it joyfully simple to write integration tests. You can check
+out the [current tests][1] or [this blog post][2] to see how.
 
 ## Running Tests
 
-* `ember test`
-* `ember test --server`
+You can run your tests by typing `ember test` in the addon or launching `ember
+serve` and then going to `http://localhost:4200` to see the tests run.
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://www.ember-cli.com/](http://www.ember-cli.com/).
+[1]: https://github.com/balinterdi/ember-cli-star-rating/tree/master/tests/integration/components
+[2]: http://alisdair.mcdiarmid.org/2015/06/20/ember-component-integration-tests.html
