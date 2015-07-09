@@ -27,6 +27,20 @@ Optionally, you can pass the maximum rating (the number of stars to be drawn, wh
 {{star-rating item=song rating=song.rating setAction="updateRating" maxRating=10}}
 ```
 
+If you use the component in the non-block form (like above), the appropriate
+glyhphicon classes ('glyphicon-star' and ''glyphicon-star-empty') will be added
+to each star's tag, so you'll need to have the glyphicons fonts pulled in to
+display them correctly.
+
+In the block form, the stars are just yielded back, each with their rating and
+'fullness':
+
+```hbs
+{{#star-rating item=song rating=song.rating as |star|}}
+  {{star.rating}} is full: {{star.full}}
+{{/star-rating}}
+```
+
 That's it!
 
 ## Contributing
