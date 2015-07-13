@@ -46,7 +46,7 @@ test('Triggers the passed-in action handler', function(assert) {
   assert.ok(clickedRating, "The `updateRating` action was called");
 });
 
-test('In block form, yields back each star', function(assert) {
+test('In block form, yields back the decorated stars', function(assert) {
   assert.expect(2);
 
   var song = Ember.Object.create({ rating: 4 });
@@ -54,8 +54,10 @@ test('In block form, yields back each star', function(assert) {
   this.set('maxRating', 5);
 
   this.render(hbs`
-    {{#star-rating item=song rating=song.rating maxRating=maxRating as |star|}}
-      <span class="{{if star.full 'full-star' 'empty-star'}}"></span>
+    {{#star-rating item=song rating=song.rating maxRating=maxRating as |stars|}}
+      {{#each stars as |star|}}
+        <span class="{{if star.full 'full-star' 'empty-star'}}"></span>
+      {{/each}}
     {{/star-rating}}
   `);
 

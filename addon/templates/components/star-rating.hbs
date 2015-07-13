@@ -1,9 +1,10 @@
-{{#each stars as |star|}}
-  {{#if template}}
+{{#if template}}
+  {{yield stars}}
+{{else}}
+  {{#each stars as |star|}}
     {{yield star}}
-  {{else}}
     <span class="star-rating glyphicon {{if star.full 'glyphicon-star' 'glyphicon-star-empty'}}"
       {{action "set" star.rating}}>
     </span>
-  {{/if}}
-{{/each}}
+  {{/each}}
+{{/if}}
