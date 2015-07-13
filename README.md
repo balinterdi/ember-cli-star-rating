@@ -36,8 +36,10 @@ In the block form, the stars are just yielded back, each with their rating and
 'fullness':
 
 ```hbs
-{{#star-rating item=song rating=song.rating as |star|}}
-  {{star.rating}} is full: {{star.full}}
+{{#star-rating item=song rating=song.rating as |stars|}}
+  {{#each stars as |star|}}
+    {{star.rating}} is full: {{star.full}}
+  {{/each}}
 {{/star-rating}}
 ```
 
