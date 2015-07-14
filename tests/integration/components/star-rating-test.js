@@ -6,7 +6,7 @@ moduleForComponent('star-rating', 'Integration | Component | star rating', {
   integration: true
 });
 
-test('Renders the full and empty stars correctly', function(assert) {
+test('Renders the full and empty stars correctly with integers', function(assert) {
   assert.expect(6);
 
   var song = Ember.Object.create({ rating: 4 });
@@ -24,6 +24,28 @@ test('Renders the full and empty stars correctly', function(assert) {
   assert.equal(this.$('.glyphicon-star-empty').length, 6, "The right amount of empty stars is rendered after changing maxRating");
 
   this.set('song.rating', 2);
+  assert.equal(this.$('.glyphicon-star').length, 2, "The right amount of full stars is rendered after changing rating");
+  assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
+});
+
+test('Renders the full and empty stars correctly with float ratings', function(assert) {
+  assert.expect(6);
+
+  var song = Ember.Object.create({ rating: 3.2 });
+  this.set('song', song);
+  this.set('maxRating', 5);
+
+  this.render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating}}`);
+
+  assert.equal(this.$('.glyphicon-star').length, 3, "The right amount of full stars is rendered");
+  assert.equal(this.$('.glyphicon-star-empty').length, 2, "The right amount of empty stars is rendered");
+
+  this.set('maxRating', 10);
+
+  assert.equal(this.$('.glyphicon-star').length, 3, "The right amount of full stars is rendered after changing maxRating");
+  assert.equal(this.$('.glyphicon-star-empty').length, 7, "The right amount of empty stars is rendered after changing maxRating");
+
+  this.set('song.rating', 1.9);
   assert.equal(this.$('.glyphicon-star').length, 2, "The right amount of full stars is rendered after changing rating");
   assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
 });
