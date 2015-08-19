@@ -2,7 +2,6 @@
   {{yield stars}}
 {{else}}
   {{#each stars as |star|}}
-    {{yield star}}
     <span class="star-rating glyphicon {{if star.full 'glyphicon-star' 'glyphicon-star-empty'}}"
       {{action "set" star.rating}}>
     </span>
