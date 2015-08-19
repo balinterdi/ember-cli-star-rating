@@ -50,7 +50,7 @@ test('Renders the full and empty stars correctly with float ratings', function(a
   assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
 });
 
-test('Triggers the passed-in action handler', function(assert) {
+test('Triggers the passed-in string action handler', function(assert) {
   assert.expect(1);
 
   var song = Ember.Object.create({ rating: 4 }),
@@ -58,14 +58,35 @@ test('Triggers the passed-in action handler', function(assert) {
 
   this.set('song', song);
   this.set('maxRating', 5);
-  this.on("updateRating", function(rating) {
-    clickedRating = rating;
+  this.on("updateRating", function(params) {
+    clickedRating = params.rating;
   });
 
-  this.render(hbs`{{star-rating item=song rating=song.rating setAction="updateRating"}}`);
-  this.$('.star-rating').click();
+  this.render(hbs`{{star-rating item=song rating=song.rating on-click="updateRating"}}`);
+  this.$('.star-rating:first').click();
 
-  assert.ok(clickedRating, "The `updateRating` action was called");
+  assert.equal(clickedRating, 1, "The `updateRating` action was called");
+});
+
+test('Triggers the passed-in closure action handler', function(assert) {
+  assert.expect(1);
+
+  var song = Ember.Object.create({ rating: 4 }),
+      clickedRating;
+
+  this.set('song', song);
+  this.set('maxRating', 5);
+
+  this.actions = {
+    updateRating: function(params) {
+      clickedRating = params.rating;
+    }
+  };
+
+  this.render(hbs`{{star-rating item=song rating=song.rating on-click=(action "updateRating")}}`);
+  this.$('.star-rating:first').click();
+
+  assert.equal(clickedRating, 1, "The `updateRating` action was called");
 });
 
 test('In block form, yields back the decorated stars', function(assert) {
