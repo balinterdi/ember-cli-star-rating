@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-star-rating",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Adds a star-rating widget to your Ember application.",
   "directories": {
     "doc": "doc",
