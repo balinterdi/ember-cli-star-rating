@@ -13,8 +13,9 @@ export default Ember.Component.extend({
   setAction:  '',
 
   stars: Ember.computed('rating', 'maxRating', function() {
-    var fullStars = this.starRange(1, Math.round(this.get('rating')), 'full');
-    var emptyStars = this.starRange(Math.round(this.get('rating')) + 1, this.get('maxRating'), 'empty');
+    var rating = Math.round(this.get('rating'));
+    var fullStars = this.starRange(1, rating, 'full');
+    var emptyStars = this.starRange(rating + 1, this.get('maxRating'), 'empty');
     return fullStars.concat(emptyStars);
   }),
 
