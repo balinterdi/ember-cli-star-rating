@@ -18,13 +18,19 @@ property itself and the action that should be fired when one of the stars is
 clicked by the user.
 
 ```hbs
-{{star-rating item=song rating=song.rating setAction="updateRating"}}
+{{star-rating item=song rating=song.rating on-click="updateRating"}}
+```
+
+You can also use a closure action, if you prefer:
+
+```hbs
+{{star-rating item=song rating=song.rating on-click=(action "updateRating")}}
 ```
 
 Optionally, you can pass the maximum rating (the number of stars to be drawn, which is 5 by default):
 
 ```hbs
-{{star-rating item=song rating=song.rating setAction="updateRating" maxRating=10}}
+{{star-rating item=song rating=song.rating on-click=(action "updateRating") maxRating=10}}
 ```
 
 If you use the component in the non-block form (like above), the appropriate
@@ -47,8 +53,7 @@ That's it!
 
 ## Contributing
 
-I'm happy to consider changes and accept feature requests (although the problem
-space this lib aims to solve is fairly limited :)). If you submit a PR, please
+I'm happy to consider changes and accept feature requests. If you submit a PR, please
 include tests in `tests/integration/components/star-rating-test.js`.
 
 Ember CLI now makes it joyfully simple to write integration tests. You can check
