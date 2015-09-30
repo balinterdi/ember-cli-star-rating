@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   rating:     0,
   maxRating:  5,
   item:       null,
-  setAction:  '',
+  "on-click": null,
 
   stars: Ember.computed('rating', 'maxRating', function() {
     var rating = Math.round(this.get('rating'));
@@ -29,9 +29,9 @@ export default Ember.Component.extend({
 
   actions: {
     set: function(newRating) {
-      var actionType = typeof this.get('on-click');
+      var actionType = typeof this.attrs['on-click'];
       if (actionType === 'function') {
-        this.get('on-click')({
+        this.attrs['on-click']({
           item: this.get('item'),
           rating: newRating
         });
