@@ -1,5 +1,5 @@
 {{#if hasBlock}}
-  {{yield stars}}
+  {{yield stars (action "set")}}
 {{else}}
   {{#each stars as |star|}}
     <span class="star-rating glyphicon {{if star.full 'glyphicon-star' 'glyphicon-star-empty'}}"

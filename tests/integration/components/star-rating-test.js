@@ -107,3 +107,29 @@ test('In block form, yields back the decorated stars', function(assert) {
   assert.equal(this.$('.full-star').length, 4, "The right amount of full stars is rendered");
   assert.equal(this.$('.empty-star').length, 1, "The right amount of empty stars is rendered");
 });
+
+test('In block form, calls the passed in `on-click` action', function(assert) {
+  assert.expect(1);
+
+  var song = Ember.Object.create({ rating: 4 });
+  var clickedRating;
+
+  this.set('song', song);
+  this.set('maxRating', 5);
+  this.actions = {
+    updateRating: function(params) {
+      clickedRating = params.rating;
+    }
+  };
+
+  this.render(hbs`
+    {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars set|}}
+      {{#each stars as |star|}}
+        <a class="star-rating" onclick={{action set star.rating}}><span class="fa fa-star"></span></a>
+      {{/each}}
+    {{/star-rating}}
+  `);
+  this.$('.star-rating:first').click();
+
+  assert.equal(clickedRating, 1, "The `updateRating` action was called");
+});
