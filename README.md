@@ -38,18 +38,39 @@ glyhphicon classes ('glyphicon-star' and ''glyphicon-star-empty') will be added
 to each star's tag, so you'll need to have the glyphicons fonts pulled in to
 display them correctly.
 
-In the block form, the stars are just yielded back, each with their rating and
-'fullness':
+In the block form, the component yields back the stars (where `star.full` is a
+boolean) and the `set` action that will be called when any of the stars is
+clicked:
 
 ```hbs
-{{#star-rating item=song rating=song.rating as |stars|}}
+{{#star-rating item=song rating=song.rating on-click=(action "updateRating")  as |stars set|}}
   {{#each stars as |star|}}
-    {{star.rating}} is full: {{star.full}}
+    <a {{action set star.rating}}>
+      <i class="fa {{if star.full 'fa-star' 'fa-star-o'}}"></i>
+    </a>
   {{/each}}
-{{/star-rating}}
+{{/star-rating}
 ```
 
-That's it!
+The action you pass (`updateRating` in the above example) will be called with a
+params hash that has an `item` and a `rating` key. `item` is the item that was
+clicked and `rating` is the new rating value. You can then handle the action as
+you wish:
+
+```js
+import Ember from 'ember';
+
+export default Ember.Controller.extend({
+  (...)
+  actions: {
+    updateRating(params) {
+      const { item: song, rating } = params;
+      song.set('rating', rating);
+      return song.save();
+    }
+  }
+});
+```
 
 ## Contributing
 
