@@ -1,4 +1,5 @@
 # ember-cli-star-rating
+[![Build Status](https://travis-ci.org/balinterdi/ember-cli-star-rating.svg?branch=master)](https://travis-ci.org/balinterdi/ember-cli-star-rating)
 
 An Ember CLI addon for using stars to manage ratings in your glorious Ember application.
 
