@@ -94,7 +94,7 @@ export default StarRatingComponent.extend({
 });
 ```
 
-Then use it like:
+Then use it like this:
 
 ```hbs
 {{star-rating-fa item=song rating=song.rating on-click="updateRating"}}

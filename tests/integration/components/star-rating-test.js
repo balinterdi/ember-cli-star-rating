@@ -28,7 +28,7 @@ test('Renders the full and empty stars correctly with integers', function(assert
   assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
 });
 
-test('Renders the stars correctly with font-awesome icons', function(assert) {
+test('Applies the passed fullClassNames and emptyClassNames', function(assert) {
   assert.expect(2);
 
   var song = Ember.Object.create({ rating: 4 });
