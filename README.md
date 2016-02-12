@@ -47,7 +47,7 @@ clicked:
 {{#star-rating item=song rating=song.rating on-click=(action "updateRating")  as |stars set|}}
   {{#each stars as |star|}}
     <a {{action set star.rating}}>
-      <i class="fa {{if star.full 'fa-star' 'fa-star-o'}}"></i>
+      {{if star.full}}*{{else}}_{{/if}}
     </a>
   {{/each}}
 {{/star-rating}
@@ -71,6 +71,33 @@ export default Ember.Controller.extend({
     }
   }
 });
+```
+
+## Using other icons
+
+You can use other glyphicons or font-awesome icons by specifying `fullClassNames` and `emptyClassNames` like this:
+
+```hbs
+{{star-rating item=song rating=song.rating on-click="updateRating" fullClassNames='fa fa-star' emptyClassNames='fa fa-star-o'}}
+```
+
+If you want to do this globally you can create your own component by creating a `app/components/star-rating-fa.js` file with the following content:
+
+```js
+import StarRatingComponent from 'ember-cli-star-rating/components/star-rating';
+
+export default StarRatingComponent.extend({
+
+  fullClassNames: 'fa fa-star',
+  emptyClassNames: 'fa fa-star-o'
+
+});
+```
+
+Then use it like this:
+
+```hbs
+{{star-rating-fa item=song rating=song.rating on-click="updateRating"}}
 ```
 
 ## Contributing

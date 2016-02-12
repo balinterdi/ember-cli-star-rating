@@ -12,6 +12,9 @@ export default Ember.Component.extend({
   item:       null,
   "on-click": null,
 
+  fullClassNames: 'glyphicon glyphicon-star',
+  emptyClassNames: 'glyphicon glyphicon-star-empty',
+
   stars: Ember.computed('rating', 'maxRating', function() {
     var rating = Math.round(this.get('rating'));
     var fullStars = this.starRange(1, rating, 'full');
