@@ -50,7 +50,7 @@ clicked:
       {{if star.full}}*{{else}}_{{/if}}
     </a>
   {{/each}}
-{{/star-rating}
+{{/star-rating}}
 ```
 
 The action you pass (`updateRating` in the above example) will be called with a
