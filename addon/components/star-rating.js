@@ -31,7 +31,7 @@ export default Ember.Component.extend({
   },
 
   actions: {
-    set: function(newRating) {
+    setRating: function(newRating) {
       var actionType = typeof this.attrs['on-click'];
       if (actionType === 'function') {
         this.attrs['on-click']({

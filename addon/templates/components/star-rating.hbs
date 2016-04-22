@@ -1,9 +1,9 @@
 {{#if hasBlock}}
-  {{yield stars (action "set")}}
+  {{yield stars (action "setRating")}}
 {{else}}
   {{#each stars as |star|}}
     <span class="star-rating {{if star.full fullClassNames emptyClassNames}}"
-      {{action "set" star.rating}}>
+      {{action "setRating" star.rating}}>
     </span>
   {{/each}}
 {{/if}}

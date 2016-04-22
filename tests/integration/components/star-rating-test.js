@@ -136,9 +136,9 @@ test('In block form, calls the passed in `on-click` action', function(assert) {
   };
 
   this.render(hbs`
-    {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars set|}}
+    {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars setRating|}}
       {{#each stars as |star|}}
-        <a class="star-rating" onclick={{action set star.rating}}><span class="fa fa-star"></span></a>
+        <a class="star-rating" onclick={{action setRating star.rating}}><span class="fa fa-star"></span></a>
       {{/each}}
     {{/star-rating}}
   `);
