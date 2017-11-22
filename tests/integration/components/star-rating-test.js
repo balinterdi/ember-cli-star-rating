@@ -1,4 +1,4 @@
-import Ember from 'ember';
+import EmberObject from '@ember/object';
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
 
@@ -9,7 +9,7 @@ moduleForComponent('star-rating', 'Integration | Component | star rating', {
 test('Renders the full and empty stars correctly with integers', function(assert) {
   assert.expect(6);
 
-  var song = Ember.Object.create({ rating: 4 });
+  var song = EmberObject.create({ rating: 4 });
   this.set('song', song);
   this.set('maxRating', 5);
 
@@ -31,7 +31,7 @@ test('Renders the full and empty stars correctly with integers', function(assert
 test('Applies the passed fullClassNames and emptyClassNames', function(assert) {
   assert.expect(2);
 
-  var song = Ember.Object.create({ rating: 4 });
+  var song = EmberObject.create({ rating: 4 });
   this.set('song', song);
   this.set('maxRating', 5);
 
@@ -44,7 +44,7 @@ test('Applies the passed fullClassNames and emptyClassNames', function(assert) {
 test('Renders the full and empty stars correctly with float ratings', function(assert) {
   assert.expect(6);
 
-  var song = Ember.Object.create({ rating: 3.2 });
+  var song = EmberObject.create({ rating: 3.2 });
   this.set('song', song);
   this.set('maxRating', 5);
 
@@ -66,7 +66,7 @@ test('Renders the full and empty stars correctly with float ratings', function(a
 test('Triggers the passed-in string action handler', function(assert) {
   assert.expect(1);
 
-  var song = Ember.Object.create({ rating: 4 }),
+  var song = EmberObject.create({ rating: 4 }),
       clickedRating;
 
   this.set('song', song);
@@ -84,7 +84,7 @@ test('Triggers the passed-in string action handler', function(assert) {
 test('Triggers the passed-in closure action handler', function(assert) {
   assert.expect(1);
 
-  var song = Ember.Object.create({ rating: 4 }),
+  var song = EmberObject.create({ rating: 4 }),
       clickedRating;
 
   this.set('song', song);
@@ -105,7 +105,7 @@ test('Triggers the passed-in closure action handler', function(assert) {
 test('In block form, yields back the decorated stars', function(assert) {
   assert.expect(2);
 
-  var song = Ember.Object.create({ rating: 4 });
+  var song = EmberObject.create({ rating: 4 });
   this.set('song', song);
   this.set('maxRating', 5);
 
@@ -124,7 +124,7 @@ test('In block form, yields back the decorated stars', function(assert) {
 test('In block form, calls the passed in `on-click` action', function(assert) {
   assert.expect(1);
 
-  var song = Ember.Object.create({ rating: 4 });
+  var song = EmberObject.create({ rating: 4 });
   var clickedRating;
 
   this.set('song', song);

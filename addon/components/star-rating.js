@@ -1,7 +1,8 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Component from '@ember/component';
 import layout from '../templates/components/star-rating';
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'div',
   classNames: ['rating-panel'],
 
@@ -15,7 +16,7 @@ export default Ember.Component.extend({
   fullClassNames: 'glyphicon glyphicon-star',
   emptyClassNames: 'glyphicon glyphicon-star-empty',
 
-  stars: Ember.computed('rating', 'maxRating', function() {
+  stars: computed('rating', 'maxRating', function() {
     var rating = Math.round(this.get('rating'));
     var fullStars = this.starRange(1, rating, 'full');
     var emptyStars = this.starRange(rating + 1, this.get('maxRating'), 'empty');
