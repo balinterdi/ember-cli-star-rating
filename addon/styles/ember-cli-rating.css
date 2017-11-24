@@ -1,5 +1,12 @@
 a.star-rating {
-  color: inherit;
   text-decoration: none;
+}
+
+.star-rating {
+  color: inherit;
+}
+
+.star-rating-hovered {
+  color: #ffc000;
 }
 
