@@ -1,9 +1,12 @@
 {{#if hasBlock}}
   {{yield stars (action "setRating")}}
 {{else}}
-  {{#each stars as |star|}}
-    <a href="#" {{action "setRating" star.rating}}
-       class="star-rating {{if star.full fullClassNames emptyClassNames}}">
+  {{#each stars as |star i|}}
+    <a href="#"
+       {{action "setRating" star.rating on="click"}}
+       {{action (mut hoveredIndex) i on="mouseEnter"}}
+       {{action (mut hoveredIndex) null on="mouseLeave"}}
+       class="star-rating {{star.class}}">
     </a>
   {{/each}}
 {{/if}}
