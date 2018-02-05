@@ -17,10 +17,10 @@ export default Component.extend({
   emptyClassNames: 'glyphicon glyphicon-star-empty',
 
   stars: computed('rating', 'maxRating', function() {
-      var rating = this.get('rating');
-      var end = this.get('maxRating')
-      var starsArray = [];
-      for (var i = 0; i < end ; i++) {
+      let rating = this.get('rating');
+      let end = this.get('maxRating')
+      let starsArray = [];
+      for (let i = 0; i < end ; i++) {
         starsArray.push({ rating: i+1, full: i < rating });
       }
       return starsArray;
@@ -28,7 +28,7 @@ export default Component.extend({
 
   actions: {
     setRating: function(newRating) {
-      var actionType = typeof this.attrs['on-click'];
+      let actionType = typeof this.attrs['on-click'];
       if (actionType === 'function') {
         this.attrs['on-click']({
           item: this.get('item'),
