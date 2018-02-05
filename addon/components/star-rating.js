@@ -17,11 +17,10 @@ export default Component.extend({
   emptyClassNames: 'glyphicon glyphicon-star-empty',
 
   stars: computed('rating', 'maxRating', function() {
-      let rating = this.get('rating');
-      let end = this.get('maxRating')
+      let rating = Math.round(this.get('rating'));
       let starsArray = [];
-      for (let i = 0; i < end ; i++) {
-        starsArray.push({ rating: i+1, full: i < rating });
+      for (let i=1; i <= this.get('maxRating'); i++) {
+        starsArray.push({ rating: i, full: rating >= i });
       }
       return starsArray;
     }),
