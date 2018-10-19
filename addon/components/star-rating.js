@@ -8,6 +8,7 @@ export default Component.extend({
 
   layout: layout,
 
+  // @arguments
   rating:     0,
   maxRating:  5,
   item:       null,
@@ -27,18 +28,10 @@ export default Component.extend({
 
   actions: {
     setRating: function(newRating) {
-      let actionType = typeof this.attrs['on-click'];
-      if (actionType === 'function') {
-        this.attrs['on-click']({
-          item: this.get('item'),
-          rating: newRating
-        });
-      } else {
-        this.sendAction('on-click', {
-          item: this.get('item'),
-          rating: newRating
-        });
-      }
+      this.get('on-click')({
+        item: this.get('item'),
+        rating: newRating
+      });
     }
   }
 });

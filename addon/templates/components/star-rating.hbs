@@ -2,8 +2,11 @@
   {{yield stars (action "setRating")}}
 {{else}}
   {{#each stars as |star|}}
-    <a href="#" {{action "setRating" star.rating}}
-       class="star-rating {{if star.full fullClassNames emptyClassNames}}">
+    <a
+      href="#"
+      class="star-rating {{if star.full fullClassNames emptyClassNames}}"
+      onclick={{action "setRating" star.rating}}
+    >
     </a>
   {{/each}}
 {{/if}}

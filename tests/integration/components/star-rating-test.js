@@ -1,148 +1,121 @@
 import EmberObject from '@ember/object';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
-import { moduleForComponent, test } from 'ember-qunit';
 
-moduleForComponent('star-rating', 'Integration | Component | star rating', {
-  integration: true
-});
+module('Integration | Component | star-rating', function(hooks) {
+  setupRenderingTest(hooks);
 
-test('Renders the full and empty stars correctly with integers', function(assert) {
-  assert.expect(6);
+  test('Renders the full and empty stars correctly with integer ratings', async function(assert) {
+    let song = EmberObject.create({ rating: 4 });
+    this.set('song', song);
+    this.set('maxRating', 5);
 
-  var song = EmberObject.create({ rating: 4 });
-  this.set('song', song);
-  this.set('maxRating', 5);
+    await render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating}}`);
 
-  this.render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating}}`);
+    assert.dom('.glyphicon-star').exists({ count: 4 }, "The right amount of full stars is rendered");
+    assert.dom('.glyphicon-star-empty').exists({ count: 1 }, "The right amount of empty stars is rendered");
 
-  assert.equal(this.$('.glyphicon-star').length, 4, "The right amount of full stars is rendered");
-  assert.equal(this.$('.glyphicon-star-empty').length, 1, "The right amount of empty stars is rendered");
+    this.set('maxRating', 10);
+    assert.dom('.glyphicon-star').exists({ count: 4 }, "The right amount of full stars is rendered after changing maxRating");
+    assert.dom('.glyphicon-star-empty').exists({ count: 6 }, "The right amount of empty stars is rendered after changing maxRating");
 
-  this.set('maxRating', 10);
-
-  assert.equal(this.$('.glyphicon-star').length, 4, "The right amount of full stars is rendered after changing maxRating");
-  assert.equal(this.$('.glyphicon-star-empty').length, 6, "The right amount of empty stars is rendered after changing maxRating");
-
-  this.set('song.rating', 2);
-  assert.equal(this.$('.glyphicon-star').length, 2, "The right amount of full stars is rendered after changing rating");
-  assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
-});
-
-test('Applies the passed fullClassNames and emptyClassNames', function(assert) {
-  assert.expect(2);
-
-  var song = EmberObject.create({ rating: 4 });
-  this.set('song', song);
-  this.set('maxRating', 5);
-
-  this.render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating fullClassNames='fa fa-star' emptyClassNames='fa fa-star-o'}}`);
-
-  assert.equal(this.$('.fa-star').length, 4, "The right amount of full stars is rendered");
-  assert.equal(this.$('.fa-star-o').length, 1, "The right amount of empty stars is rendered");
-});
-
-test('Renders the full and empty stars correctly with float ratings', function(assert) {
-  assert.expect(6);
-
-  var song = EmberObject.create({ rating: 3.2 });
-  this.set('song', song);
-  this.set('maxRating', 5);
-
-  this.render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating}}`);
-
-  assert.equal(this.$('.glyphicon-star').length, 3, "The right amount of full stars is rendered");
-  assert.equal(this.$('.glyphicon-star-empty').length, 2, "The right amount of empty stars is rendered");
-
-  this.set('maxRating', 10);
-
-  assert.equal(this.$('.glyphicon-star').length, 3, "The right amount of full stars is rendered after changing maxRating");
-  assert.equal(this.$('.glyphicon-star-empty').length, 7, "The right amount of empty stars is rendered after changing maxRating");
-
-  this.set('song.rating', 1.9);
-  assert.equal(this.$('.glyphicon-star').length, 2, "The right amount of full stars is rendered after changing rating");
-  assert.equal(this.$('.glyphicon-star-empty').length, 8, "The right amount of empty stars is rendered after changing rating");
-});
-
-test('Triggers the passed-in string action handler', function(assert) {
-  assert.expect(1);
-
-  var song = EmberObject.create({ rating: 4 }),
-      clickedRating;
-
-  this.set('song', song);
-  this.set('maxRating', 5);
-  this.on("updateRating", function(params) {
-    clickedRating = params.rating;
+    this.set('song.rating', 2);
+    assert.dom('.glyphicon-star').exists({ count: 2 }, "The right amount of full stars is rendered after changing rating");
+    assert.dom('.glyphicon-star-empty').exists({ count: 8 }, "The right amount of empty stars is rendered after changing rating");
   });
 
-  this.render(hbs`{{star-rating item=song rating=song.rating on-click="updateRating"}}`);
-  this.$('.star-rating:first').click();
+  test('Applies the passed fullClassNames and emptyClassNames', async function(assert) {
+    let song = EmberObject.create({ rating: 4 });
+    this.set('song', song);
+    this.set('maxRating', 5);
 
-  assert.equal(clickedRating, 1, "The `updateRating` action was called");
-});
+    await render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating fullClassNames='fa fa-star' emptyClassNames='fa fa-star-o'}}`);
 
-test('Triggers the passed-in closure action handler', function(assert) {
-  assert.expect(1);
+    assert.dom('.fa-star').exists({ count: 4 }, "The right amount of full stars is rendered");
+    assert.dom('.fa-star-o').exists({ count: 1 }, "The right amount of empty stars is rendered");
+  });
 
-  var song = EmberObject.create({ rating: 4 }),
-      clickedRating;
+  test('Renders the full and empty stars correctly with float ratings', async function(assert) {
+    let song = EmberObject.create({ rating: 3.2 });
+    this.set('song', song);
+    this.set('maxRating', 5);
 
-  this.set('song', song);
-  this.set('maxRating', 5);
+    await render(hbs`{{star-rating item=song rating=song.rating maxRating=maxRating}}`);
 
-  this.actions = {
-    updateRating: function(params) {
-      clickedRating = params.rating;
-    }
-  };
+    assert.dom('.glyphicon-star').exists({ count: 3 }, "The right amount of full stars is rendered");
+    assert.dom('.glyphicon-star-empty').exists({ count: 2 }, "The right amount of empty stars is rendered");
 
-  this.render(hbs`{{star-rating item=song rating=song.rating on-click=(action "updateRating")}}`);
-  this.$('.star-rating:first').click();
+    this.set('maxRating', 10);
 
-  assert.equal(clickedRating, 1, "The `updateRating` action was called");
-});
+    assert.dom('.glyphicon-star').exists({ count: 3 }, "The right amount of full stars is rendered after changing maxRating");
+    assert.dom('.glyphicon-star-empty').exists({ count: 7 }, "The right amount of empty stars is rendered after changing maxRating");
 
-test('In block form, yields back the decorated stars', function(assert) {
-  assert.expect(2);
+    this.set('song.rating', 1.9);
+    assert.dom('.glyphicon-star').exists({ count: 2 }, "The right amount of full stars is rendered after changing rating");
+    assert.dom('.glyphicon-star-empty').exists({ count: 8 }, "The right amount of empty stars is rendered after changing rating");
+  });
 
-  var song = EmberObject.create({ rating: 4 });
-  this.set('song', song);
-  this.set('maxRating', 5);
+  test('Triggers the passed-in action when clicked', async function(assert) {
+    let song = EmberObject.create({ rating: 4 }),
+        clickedRating;
 
-  this.render(hbs`
-    {{#star-rating item=song rating=song.rating maxRating=maxRating as |stars|}}
-      {{#each stars as |star|}}
-        <span class="{{if star.full 'full-star' 'empty-star'}}"></span>
-      {{/each}}
-    {{/star-rating}}
-  `);
+    this.set('song', song);
+    this.set('maxRating', 5);
 
-  assert.equal(this.$('.full-star').length, 4, "The right amount of full stars is rendered");
-  assert.equal(this.$('.empty-star').length, 1, "The right amount of empty stars is rendered");
-});
+    this.actions = {
+      updateRating(params) {
+        clickedRating = params.rating;
+      }
+    };
 
-test('In block form, calls the passed in `on-click` action', function(assert) {
-  assert.expect(1);
+    await render(hbs`{{star-rating item=song rating=song.rating on-click=(action "updateRating")}}`);
 
-  var song = EmberObject.create({ rating: 4 });
-  var clickedRating;
+    let firstStar = document.querySelectorAll('.star-rating')[0];
+    await click(firstStar);
+    assert.equal(clickedRating, 1, "The `updateRating` action was called");
+  });
 
-  this.set('song', song);
-  this.set('maxRating', 5);
-  this.actions = {
-    updateRating: function(params) {
-      clickedRating = params.rating;
-    }
-  };
+  test('In block form, yields back the decorated stars', async function(assert) {
+    let song = EmberObject.create({ rating: 4 });
+    this.set('song', song);
+    this.set('maxRating', 5);
 
-  this.render(hbs`
-    {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars setRating|}}
-      {{#each stars as |star|}}
-        <a class="star-rating" onclick={{action setRating star.rating}}><span class="fa fa-star"></span></a>
-      {{/each}}
-    {{/star-rating}}
-  `);
-  this.$('.star-rating:first').click();
+    await render(hbs`
+      {{#star-rating item=song rating=song.rating maxRating=maxRating as |stars|}}
+        {{#each stars as |star|}}
+          <span class="{{if star.full 'full-star' 'empty-star'}}"></span>
+        {{/each}}
+      {{/star-rating}}
+    `);
 
-  assert.equal(clickedRating, 1, "The `updateRating` action was called");
+    assert.dom('.full-star').exists({ count: 4 }, "The right amount of full stars is rendered");
+    assert.dom('.empty-star').exists({ count: 1 }, "The right amount of empty stars is rendered");
+  });
+
+  test('In block form, calls the passed in `on-click` action', async function(assert) {
+    let song = EmberObject.create({ rating: 4 });
+    let clickedRating;
+
+    this.set('song', song);
+    this.set('maxRating', 5);
+    this.actions = {
+      updateRating: function(params) {
+        clickedRating = params.rating;
+      }
+    };
+
+    await render(hbs`
+      {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars setRating|}}
+        {{#each stars as |star|}}
+          <a class="star-rating" onclick={{action setRating star.rating}}><span class="fa fa-star"></span></a>
+        {{/each}}
+      {{/star-rating}}
+    `);
+
+    let firstStar = document.querySelectorAll('.star-rating')[0];
+    await click(firstStar);
+    assert.equal(clickedRating, 1, "The `updateRating` action was called");
+  });
 });

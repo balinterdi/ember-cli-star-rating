@@ -3,7 +3,8 @@
 
 An Ember CLI addon for using stars to manage ratings in your glorious Ember application.
 
-## Installation
+Installation
+------------------------------------------------------------------------------
 
 As this is an Ember addon, you just need to do:
 
