@@ -2,11 +2,12 @@
   {{yield stars (action "setRating")}}
 {{else}}
   {{#each stars as |star|}}
-    <a
-      href="#"
-      class="star-rating {{if star.full fullClassNames emptyClassNames}}"
+    <span
+      class="rating-star {{if star.full fullClassNames emptyClassNames}}"
+      role="button"
       onclick={{action "setRating" star.rating}}
+      data-test={{concat "star-rating-" star.rating}}
     >
-    </a>
+    </span>
   {{/each}}
 {{/if}}

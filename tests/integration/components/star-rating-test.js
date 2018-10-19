@@ -72,7 +72,7 @@ module('Integration | Component | star-rating', function(hooks) {
 
     await render(hbs`{{star-rating item=song rating=song.rating on-click=(action "updateRating")}}`);
 
-    let firstStar = document.querySelectorAll('.star-rating')[0];
+    let firstStar = document.querySelectorAll('.rating-star')[0];
     await click(firstStar);
     assert.equal(clickedRating, 1, "The `updateRating` action was called");
   });
@@ -109,12 +109,16 @@ module('Integration | Component | star-rating', function(hooks) {
     await render(hbs`
       {{#star-rating item=song rating=song.rating maxRating=maxRating on-click=(action "updateRating") as |stars setRating|}}
         {{#each stars as |star|}}
-          <a class="star-rating" onclick={{action setRating star.rating}}><span class="fa fa-star"></span></a>
+          <span
+            class="rating-star"
+            onclick={{action setRating star.rating}}>
+            <span class="fa fa-star"></span>
+          </span>
         {{/each}}
       {{/star-rating}}
     `);
 
-    let firstStar = document.querySelectorAll('.star-rating')[0];
+    let firstStar = document.querySelectorAll('.rating-star')[0];
     await click(firstStar);
     assert.equal(clickedRating, 1, "The `updateRating` action was called");
   });
