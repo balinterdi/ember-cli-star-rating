@@ -3,6 +3,14 @@
 
 An Ember CLI addon for using stars to manage ratings in your glorious Ember application.
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
