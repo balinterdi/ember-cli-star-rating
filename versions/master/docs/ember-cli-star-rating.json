@@ -1,0 +1,1 @@
+{"jsonapi":{"version":"1.0"},"data":{"type":"project","id":"ember-cli-star-rating","attributes":{"name":"ember-cli-star-rating","version":"0.6.0","navigationIndex":[]},"relationships":{"modules":{"data":[]}}}}
