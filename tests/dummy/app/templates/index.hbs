@@ -1,8 +1,13 @@
-{{star-rating
-  item=song
-  rating=song.rating
-  fullClassNames="fa fa-star"
-  emptyClassNames="fa fa-star-o"
-  on-click=(action "updateSongRating")
-}}
+{{docs-header}}
 
+<div class="container">
+  <div class="stars">
+    {{star-rating
+      item=song
+      rating=song.rating
+      fullClassNames="fa fa-star"
+      emptyClassNames="fa fa-star-o"
+      on-click=(action "updateSongRating")
+    }}
+  </div>
+</div>
