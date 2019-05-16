@@ -18,13 +18,13 @@ export default Component.extend({
   emptyClassNames: 'glyphicon glyphicon-star-empty',
 
   stars: computed('rating', 'maxRating', function() {
-      let rating = Math.round(this.get('rating'));
-      let starsArray = [];
-      for (let i=1; i <= this.get('maxRating'); i++) {
-        starsArray.push({ rating: i, full: rating >= i });
-      }
-      return starsArray;
-    }),
+    let rating = Math.round(this.get('rating'));
+    let starsArray = [];
+    for (let i=1; i <= this.get('maxRating'); i++) {
+      starsArray.push({ rating: i, full: rating >= i });
+    }
+    return starsArray;
+  }),
 
   actions: {
     setRating: function(newRating) {
