@@ -3,3 +3,10 @@ update_configs:
   - package_manager: "javascript"
     directory: "/"
     update_schedule: "weekly"
+    automerged_updates:
+      - match:
+          dependency_type: "development"
+          update_type: "in_range"
+      - match:
+          dependency_type: "production"
+          update_type: "semver:patch"
