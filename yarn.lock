@@ -953,28 +953,20 @@
     resolve "^1.8.1"
     semver "^5.6.0"
 
-"@glimmer/compiler@^0.38.0":
-  version "0.38.4"
-  resolved "https://registry.yarnpkg.com/@glimmer/compiler/-/compiler-0.38.4.tgz#ea5f39b9681a652dd96c48eeb55cd95aa6f6eddd"
-  integrity sha512-AQdDqInUM0yrUUEFdkNI2GR/WPfWN4HvbZYwgBet7TGicvfWXXLe76TI65H03SnPzoh835FDq2XcWLqlgwYt9w==
+"@glimmer/compiler@^0.42.0":
+  version "0.42.1"
+  resolved "https://registry.yarnpkg.com/@glimmer/compiler/-/compiler-0.42.1.tgz#46c9f0b296c7821c6d889a2afcc0c9d5ca2d7a23"
+  integrity sha512-n6kcHm7UKKuzDwYBdrLm57B8l1dOwQ2ahXcYv8uGVilQa3GjJGW9r/exdEe7mjrYFwLce68DZumBt3Zo8H/trw==
   dependencies:
-    "@glimmer/interfaces" "^0.38.4"
-    "@glimmer/syntax" "^0.38.4"
-    "@glimmer/util" "^0.38.4"
-    "@glimmer/wire-format" "^0.38.4"
+    "@glimmer/interfaces" "^0.42.1"
+    "@glimmer/syntax" "^0.42.1"
+    "@glimmer/util" "^0.42.1"
+    "@glimmer/wire-format" "^0.42.1"
 
 "@glimmer/di@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@glimmer/di/-/di-0.2.0.tgz#73bfd4a6ee4148a80bf092e8a5d29bcac9d4ce7e"
   integrity sha1-c7/Upu5BSKgL8JLopdKbysnUzn4=
-
-"@glimmer/interfaces@^0.38.4":
-  version "0.38.4"
-  resolved "https://registry.yarnpkg.com/@glimmer/interfaces/-/interfaces-0.38.4.tgz#437663eb07b97a22c8348a47b25191b5c5198bf3"
-  integrity sha512-Kuc2BNOZMnwmdZh3jOLUktVu9V0BASCRAslPmVfhzgPjD3j9VzqNOifD7eBz/ZvWqpS1e7CgBEc42CBlCBUfnQ==
-  dependencies:
-    "@glimmer/wire-format" "^0.38.4"
-    "@simple-dom/interface" "1.4.0"
 
 "@glimmer/interfaces@^0.42.1":
   version "0.42.1"
@@ -988,17 +980,7 @@
   dependencies:
     "@glimmer/di" "^0.2.0"
 
-"@glimmer/syntax@^0.38.4":
-  version "0.38.4"
-  resolved "https://registry.yarnpkg.com/@glimmer/syntax/-/syntax-0.38.4.tgz#eac34167cfa80daabb5db25fece1982c17a063f1"
-  integrity sha512-aB5vNC4ADCFXQWORFnx1kG8DtaWqS9E2zkynnj8/GqfYjO4yBtM0HFqBHAEIfcD8Zm+zK4osghs2YGrKvIsEdg==
-  dependencies:
-    "@glimmer/interfaces" "^0.38.4"
-    "@glimmer/util" "^0.38.4"
-    handlebars "^4.0.6"
-    simple-html-tokenizer "^0.5.6"
-
-"@glimmer/syntax@^0.42.0":
+"@glimmer/syntax@^0.42.0", "@glimmer/syntax@^0.42.1":
   version "0.42.1"
   resolved "https://registry.yarnpkg.com/@glimmer/syntax/-/syntax-0.42.1.tgz#b1cd2afebbec2aec988cd12fe2f496710e3f55eb"
   integrity sha512-9tQTqrXDZeD4YbaWI4mABVxDsORyYCfmfZu9fQWTwHAIr4fubrOBEk1wvkPTvxwJmDe4dBzQAYNOmLPC3XkA6Q==
@@ -1008,22 +990,18 @@
     handlebars "^4.0.13"
     simple-html-tokenizer "^0.5.8"
 
-"@glimmer/util@^0.38.4":
-  version "0.38.4"
-  resolved "https://registry.yarnpkg.com/@glimmer/util/-/util-0.38.4.tgz#43b4fbdf98c8c244ac7d1bfd95fef9c8f7761ad5"
-  integrity sha512-qFU96hAcDjK3ZD8lVJMB+FOJjCm+qZydiUICDj/CYTx82bSOfkzpHLNQ5OivJpsVl1+jFqJolQwrjqFC1bQJHA==
-
 "@glimmer/util@^0.42.1":
   version "0.42.1"
   resolved "https://registry.yarnpkg.com/@glimmer/util/-/util-0.42.1.tgz#8c768c8971d8897a0c63411a09a20ea825b5efb9"
   integrity sha512-jS8bskv1wee9d0YkGpX/Xh58dHiH8nrhMZ9k7W9l06Ey9QgucqGdmJirdh/aS8yffb4fqloLjhPMef6C2DnHsQ==
 
-"@glimmer/wire-format@^0.38.4":
-  version "0.38.4"
-  resolved "https://registry.yarnpkg.com/@glimmer/wire-format/-/wire-format-0.38.4.tgz#efbfe757b05e32344855b01804cc19dcca0d0828"
-  integrity sha512-1K8N+mbUtqJ1/MR+E/kDekC53HJNecU1i0TUAz5Vh24cvBcPCWP63YtwyCOxfnn7MLFdl8/QvHuo3+8Uxw+oVg==
+"@glimmer/wire-format@^0.42.1":
+  version "0.42.1"
+  resolved "https://registry.yarnpkg.com/@glimmer/wire-format/-/wire-format-0.42.1.tgz#1861c63c305867032aa64731bf762308a8f7b6f1"
+  integrity sha512-CYcJG0HJCkA3AxmjGXlihC1UQ07aM0BSWX+9LadbAZaIcDoSSjS+LKVpsA1iEwvivTiXPbHnBvIGgNpqeVtyvg==
   dependencies:
-    "@glimmer/util" "^0.38.4"
+    "@glimmer/interfaces" "^0.42.1"
+    "@glimmer/util" "^0.42.1"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -1037,11 +1015,6 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
-
-"@simple-dom/interface@1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@simple-dom/interface/-/interface-1.4.0.tgz#e8feea579232017f89b0138e2726facda6fbb71f"
-  integrity sha512-l5qumKFWU0S+4ZzMaLXFU8tQZsicHEMEyAxI5kDFGhJsRqDwe0a7/iPA/GdxlGyDKseQQAgIz5kzU7eXTrlSpA==
 
 "@sindresorhus/is@^0.7.0":
   version "0.7.0"
@@ -5964,11 +5937,11 @@ ember-svg-jar@^2.1.0:
     path-posix "^1.0.0"
 
 ember-template-lint@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-1.1.0.tgz#312e101728452bf082f54cbe429ed9b52273ba64"
-  integrity sha512-DPEWdjaNVIC58wJqeJStvQzk2gyKN5/u6dJfDKQ7mRJaouoLP1hZjSZwwpyO9bj10E9/3OJZnLmx1jjJ9/nqWA==
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/ember-template-lint/-/ember-template-lint-1.5.3.tgz#0ebcd9e48e0b9c385ebdce3b56a0d38de804e598"
+  integrity sha512-t/Bm21UVQHYqeexQTUSqAf1xyJnimhLMCIhNPtysjbuI9y7g275AnrJvSGI8H+RiJlH/RpR59TEwvPPt4cA4Qw==
   dependencies:
-    "@glimmer/compiler" "^0.38.0"
+    "@glimmer/compiler" "^0.42.0"
     chalk "^2.0.0"
     globby "^9.0.0"
     minimatch "^3.0.4"
@@ -7508,7 +7481,7 @@ growly@^1.3.0:
   resolved "https://registry.yarnpkg.com/growly/-/growly-1.3.0.tgz#f10748cbe76af964b7c96c93c6bcc28af120c081"
   integrity sha1-8QdIy+dq+WS3yWyTxrzCivEgwIE=
 
-handlebars@^4.0.11, handlebars@^4.0.6:
+handlebars@^4.0.11:
   version "4.0.12"
   resolved "https://registry.yarnpkg.com/handlebars/-/handlebars-4.0.12.tgz#2c15c8a96d46da5e266700518ba8cb8d919d5bc5"
   integrity sha512-RhmTekP+FZL+XNhwS1Wf+bTTZpdLougwt5pcgA1tuz6Jcx0fpH/7z0qd71RKnZHBCxIRBHfBOnio4gViPemNzA==
@@ -12059,11 +12032,6 @@ silent-error@^1.0.0, silent-error@^1.0.1, silent-error@^1.1.0, silent-error@^1.1
   integrity sha512-n4iEKyNcg4v6/jpb3c0/iyH2G1nzUNl7Gpqtn/mHIJK9S/q/7MCfoO4rwVOoO59qPFIc0hVHvMbiOJ0NdtxKKw==
   dependencies:
     debug "^2.2.0"
-
-simple-html-tokenizer@^0.5.6:
-  version "0.5.6"
-  resolved "https://registry.yarnpkg.com/simple-html-tokenizer/-/simple-html-tokenizer-0.5.6.tgz#e1e442b14f5484bf9a7e2924f78f00855e6b3c14"
-  integrity sha512-WgtFeFTAzegTCs1/x096l79gscV43LS17fEXBjv1s26oqiu1qmTM0buaqba/HmlxHNfk4yJuKmSJoRDMWuQU6w==
 
 simple-html-tokenizer@^0.5.8:
   version "0.5.8"
